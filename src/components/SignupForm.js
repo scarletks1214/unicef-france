@@ -12,10 +12,6 @@ import Button from "./Button";
 
 const cryptocurrencies = [
   {
-    value: "eur",
-    label: "Euros"
-  },
-  {
     value: "btc",
     label: "Bitcoin"
   },
@@ -24,40 +20,41 @@ const cryptocurrencies = [
     label: "Ethereum"
   },
   {
-    value: "ltc",
+    value: "XRP",
+    label: "Ripple"
+  },
+  {
+    value: "LTC",
     label: "Litecoin"
   },
   {
-    value: "rip",
-    label: "Ripple"
+    value: "EOS",
+    label: "EOS"
+  },
+  {
+    value: "XLM",
+    label: "Stellar"
+  },
+  {
+    value: "XMR",
+    label: "Monero"
   },
   {
     value: "dash",
     label: "Dash"
   },
   {
-    value: "mon",
-    label: "Monero"
-  },
-  {
-    value: "eos",
-    label: "EOS"
-  },
-  {
-    value: "stellar",
-    label: "Stellar"
-  },
-
-  {
-    value: "dai",
+    value: "DAI",
     label: "DAI"
   }
 ];
+
 const MarginBottom = styled.div`
   margin-bottom: 20px;
 `;
-const ZipWrapper = styled.div`
+const Half = styled.div`
   margin-right: 10px;
+  flex: 0 0 50%;
 `;
 
 const Container = styled.form`
@@ -71,6 +68,7 @@ const Container = styled.form`
 
   padding: 30px 30px;
   ${media.tablet`padding: 50px 50px`}
+  ${media.tablet`min-width: 480px`}
 `;
 
 // zip code and state are wrapped in this
@@ -86,7 +84,9 @@ class SignupForm extends React.Component {
   };
 
   handleCurrencyChange = selectedOption => {
-    this.setState({ selectedOption });
+    this.setState({
+      selectedOption: selectedOption.value
+    });
   };
 
   handleQuantityChange = e => {
@@ -101,6 +101,13 @@ class SignupForm extends React.Component {
       alertError("missing required fields");
     }
   };
+
+  generateButtonText = () => {
+    if (!this.state.quantity) {
+      return `Please Enter a Quantity Above`;
+    }
+    return `Support unicef With ${this.state.quantity} ${this.state.selectedOption}`;
+  }
 
   render() {
     const { selectedOption } = this.state;
@@ -119,7 +126,7 @@ class SignupForm extends React.Component {
         </MarginBottom>
 
         <Row>
-          <ZipWrapper>
+          <Half>
             <Label for="cryptocurrency">Currency</Label>
             <MarginBottom>
               <Select
@@ -130,11 +137,9 @@ class SignupForm extends React.Component {
                 id="cryptocurrency"
               />
             </MarginBottom>
-          </ZipWrapper>
-          <div>
-            <Label for="quantity">
-              Quantity (in {this.state.selectedOption})
-            </Label>
+          </Half>
+          <Half>
+            <Label for="quantity">Quantity ({this.state.selectedOption})</Label>
             <MarginBottom>
               <Input
                 type="number"
@@ -143,10 +148,10 @@ class SignupForm extends React.Component {
                 onChange={this.handleQuantityChange}
               />
             </MarginBottom>
-          </div>
+          </Half>
         </Row>
 
-        <Button onClick={this.formSubmit}>Support unicef Now</Button>
+        <Button onClick={this.formSubmit}>{this.generateButtonText()}</Button>
       </Container>
     );
   }
