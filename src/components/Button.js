@@ -13,14 +13,14 @@ const StyledButton = styled.button`
   transition: all 500ms;
   border: none;
   color: white;
-  background-color: #ff12a7;
+  background-color: #008ED9;
 
   background: repeating-linear-gradient(
     135deg,
-    #E60090,
-    #E60090 10px,
-    #ff12a7 10px,
-    #ff12a7 20px
+    #1BAFEB,
+    #1BAFEB 10px,
+    #008ED9 10px,
+    #008ED9 20px
   );
 `;
 

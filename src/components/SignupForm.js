@@ -62,9 +62,9 @@ const Container = styled.form`
   flex-direction: column;
   align-items: stretch;
   border-radius: 4px;
-  background: #563d94;
+  background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: white;
+  color: black;
 
   padding: 30px 30px;
   ${media.tablet`padding: 50px 50px`}
