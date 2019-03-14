@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import media from "./media-query";
 
 import SignupForm from "./components/SignupForm";
-import unicefImage from "./unicef-bg.jpg";
+import unicefImage from "./images/unicef-bg.jpg";
 
 const Container = styled.div`
   max-width: 100%;
