@@ -30,8 +30,7 @@ const Section = styled.div`
       ? css`
           ${media.desktop`padding-bottom: 0px`}
           background-color: white;
-          color: #008FFF;
-
+          color: #008fff;
         `
       : css`
           background-color: #008fff;
@@ -52,6 +51,16 @@ const UnicefImage = styled.img`
   margin-bottom: -10px;
 `;
 
+const Footer = styled.footer`
+  margin-top: 100px;
+  color: white;
+`;
+
+const StyledAnchor  = styled.a`
+  color: white;
+  text-decoration: underline;
+`
+
 class App extends Component {
   render() {
     return (
@@ -63,6 +72,9 @@ class App extends Component {
 
         <Section center>
           <SignupForm />
+          <Footer>
+            Created by <StyledAnchor href="https://dawsbot.com">Dawson Botsford</StyledAnchor> to provide inspiration for <StyledAnchor href="https://paris.bounties.network/bounty/2566">Bounty 2566</StyledAnchor>
+          </Footer>
         </Section>
       </Container>
     );
