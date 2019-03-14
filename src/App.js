@@ -24,7 +24,7 @@ const Section = styled.div`
   ${media.tablet`padding: 120px 80px`}
   ${media.desktop`padding: 160px 200px`}
 
-  ${props => props.pink ? css`
+  ${props => props.white ? css`
     background-color: white;
     color: #1BAFEB;
   ` : css`
@@ -44,12 +44,18 @@ const Section = styled.div`
   `}
 `
 
+const BGImage = styled.div`
+ background-image: url("./unicef-bg.jpg");
+ `
+
 class App extends Component {
   render() {
     return (
       <Container>
-        <Section pink>
+        <Section white>
           <Headline>Support unicef</Headline>
+          <BGImage/>
+          <img src="unicef-bg.jpg"/>
         </Section>
         <Section center>
           <SignupForm/>
