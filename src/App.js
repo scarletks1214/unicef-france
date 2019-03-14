@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import styled, {css} from 'styled-components';
-import media from './media-query';
+import React, { Component } from "react";
+import styled, { css } from "styled-components";
+import media from "./media-query";
 
-import SignupForm from './components/SignupForm';
+import SignupForm from "./components/SignupForm";
+import unicefImage from "./unicef-bg.jpg";
 
 const Container = styled.div`
   max-width: 100%;
@@ -24,29 +25,32 @@ const Section = styled.div`
   ${media.tablet`padding: 120px 80px`}
   ${media.desktop`padding: 160px 200px`}
 
-  ${props => props.white ? css`
-    background-color: white;
-    color: #1BAFEB;
-  ` : css`
-    background: #1BAFEB;  /* fallback for old browsers */
-    ${media.tablet`
-      background: -webkit-linear-gradient(to right, #1BAFEB, #008ED9);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #1BAFEB, #008ED9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ${props =>
+    props.white
+      ? css`
+          ${media.desktop`padding-bottom: 0px`}
+          background-color: white;
+          color: #008FFF;
+
+        `
+      : css`
+          background-color: #008fff;
+          color: black;
+        `}
+
+  ${props =>
+    props.center &&
+    css`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     `}
+`;
 
-    color: black;
-  `}
-
-  ${props => props.center && css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `}
-`
-
-const BGImage = styled.div`
- background-image: url("./unicef-bg.jpg");
- `
+const UnicefImage = styled.img`
+  width: 100%;
+  margin-bottom: -10px;
+`;
 
 class App extends Component {
   render() {
@@ -54,11 +58,11 @@ class App extends Component {
       <Container>
         <Section white>
           <Headline>Support unicef</Headline>
-          <BGImage/>
-          <img src="unicef-bg.jpg"/>
         </Section>
+        <UnicefImage src={unicefImage} />
+
         <Section center>
-          <SignupForm/>
+          <SignupForm />
         </Section>
       </Container>
     );

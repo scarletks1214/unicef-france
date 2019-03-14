@@ -2,7 +2,7 @@ import React from "react";
 import Select from "react-select";
 import styled from "styled-components";
 
-import { alertError } from "../helpers/swal";
+import { alertError, alertSuccess } from "../helpers/swal";
 import "react-select/dist/react-select.css";
 
 import media from "../media-query";
@@ -97,8 +97,10 @@ class SignupForm extends React.Component {
 
   formSubmit = e => {
     e.preventDefault();
-    if (true) {
-      alertError("missing required fields");
+    if (this.state.quantity <= 0) {
+      alertError("Quantity must be larger than 0");
+    } else {
+      alertSuccess('Thank you for supporting unicef')
     }
   };
 
@@ -106,8 +108,10 @@ class SignupForm extends React.Component {
     if (!this.state.quantity) {
       return `Please Enter a Quantity Above`;
     }
-    return `Support unicef With ${this.state.quantity} ${this.state.selectedOption}`;
-  }
+    return `Support unicef With ${this.state.quantity} ${
+      this.state.selectedOption
+    }`;
+  };
 
   render() {
     const { selectedOption } = this.state;
